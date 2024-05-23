@@ -13,17 +13,18 @@ from HeartFailure.processing.data_handling import load_pipeline, load_dataset
 
 classification_pieline = load_pipeline()
 
-# def generate_predictions(data_input):
-#     data = pd.DataFrame(data_input)
-#     pred = classification_pieline.predict(data[config.FEATURES])
+def generate_predictions(data_input):
+    data = pd.DataFrame(data_input)
+    pred = classification_pieline.predict(data[config.FEATURES])
+    result = np.where(pred == 1, "High Risk", "Low Risk")
+    output = { "Predictions": result }
+    return output
+
+# def generate_predictions():
+#     test_data = load_dataset(config.TEST_FILE)
+#     pred = classification_pieline.predict(test_data[config.FEATURES])
 #     result = { "Predictions": pred }
 #     return result
-
-def generate_predictions():
-    test_data = load_dataset(config.TEST_FILE)
-    pred = classification_pieline.predict(test_data[config.FEATURES])
-    result = { "Predictions": pred }
-    return result
 
 if __name__ == "__main__":
     results = generate_predictions()
