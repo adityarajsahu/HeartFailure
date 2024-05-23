@@ -1,0 +1,13 @@
+include *.txt
+include *.md
+include *.py
+recursive-include ./HeartFailure/*
+
+include HeartFailure/datasets/*.csv
+include HeartFailure/trained_models/*.pkl
+include HeartFailure/processing/*.py
+include HeartFailure/VERSION
+include ./tests/*
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
